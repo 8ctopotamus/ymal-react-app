@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Header from './components/header'
 import SearchForm from './components/searchForm'
+import Spinner from './components/spinner'
 import API from './utils/API'
 import './App.css';
 
@@ -32,7 +33,7 @@ function App() {
         />
       </Header>
       <div className="container">
-        
+        { loading ? <Spinner /> : null }
       </div>
     </>
   );
