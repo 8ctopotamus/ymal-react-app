@@ -6,8 +6,13 @@ const SearchForm = props => {
     props.setSearchTerm(e.target.value)
   }
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    props.getRecommendations()
+  }
+
   return (
-    <form className="search-form">
+    <form onSubmit={handleSubmit} className="search-form">
       <input  
         name="searchTerm"
         value={props.searchTerm}

@@ -29,7 +29,8 @@ function App() {
       <Header>
         <SearchForm 
           searchTerm={searchTerm} 
-          setSearchTerm={setSearchTerm} 
+          setSearchTerm={setSearchTerm}
+          getRecommendations={getRecommendations}
         />
       </Header>
       <div className="container">
