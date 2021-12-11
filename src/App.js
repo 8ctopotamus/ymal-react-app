@@ -4,6 +4,7 @@ import SearchForm from './components/searchForm'
 import Spinner from './components/spinner'
 import Info from './components/info'
 import Gallery from './components/gallery'
+import Sidebar from './components/sidebar'
 import API from './utils/API'
 import './App.css';
 
@@ -12,6 +13,7 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [info, setInfo] = useState(null)
   const [results, setResults] = useState([])
+  const [saved, setSaved] = useState([])
 
   useEffect(() => {
     getRecommendations()
@@ -33,6 +35,11 @@ function App() {
     setLoading(false)
   }
 
+  const addToSaved = data => {
+    const updatedArray = [...saved, data]
+    setSaved(updatedArray)
+  }
+
   return (
     <>
       <Header>
@@ -42,13 +49,23 @@ function App() {
           getRecommendations={getRecommendations}
         />
       </Header>
-      <div className="container">
-        { loading ? <Spinner /> : (
-          <>
-            <Info info={info} />
-            <Gallery results={results} />
-          </>
-        ) }
+      <div className="row">
+        <div className="column column-20">
+          <Sidebar />
+        </div>
+        <div className="column coolumn-80">
+          <div className='container'>
+
+            <pre>{JSON.stringify(saved, null, 2)}</pre>
+
+            { loading ? <Spinner /> : (
+              <>
+                <Info info={info} />
+                <Gallery results={results} addToSaved={addToSaved} />
+              </>
+            ) }
+          </div>
+        </div>
       </div>
     </>
   );

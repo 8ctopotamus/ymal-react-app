@@ -1,6 +1,17 @@
+import { FaSave } from 'react-icons/fa'
 import './resultCard.css'
 
-const ResultCard = ({ Name, wTeaser, wUrl, yUrl }) => {
+const ResultCard = ({ Name, wTeaser, wUrl, yUrl, addToSaved }) => {
+
+  const handleClick = () => {
+    addToSaved({
+      Name, 
+      wTeaser, 
+      wUrl, 
+      yUrl
+    })
+  }
+
   return (
     <div className="card">
       <h4>{Name}</h4>
@@ -9,11 +20,13 @@ const ResultCard = ({ Name, wTeaser, wUrl, yUrl }) => {
           href={wUrl} 
           target="_blank" 
           rel="noreferrer noopener"
-          className="button"
         >
           LEARN MORE
         </a>
       )}
+      <button onClick={handleClick} className='button'>
+        <FaSave /> Save for later
+      </button>
     </div>
   )
 }
