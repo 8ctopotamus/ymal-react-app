@@ -3,6 +3,7 @@ import Header from './components/header'
 import SearchForm from './components/searchForm'
 import Spinner from './components/spinner'
 import Info from './components/info'
+import Gallery from './components/gallery'
 import API from './utils/API'
 import './App.css';
 
@@ -45,7 +46,7 @@ function App() {
         { loading ? <Spinner /> : (
           <>
             <Info info={info} />
-            <pre>{JSON.stringify(results, null, 2)}</pre>
+            <Gallery results={results} />
           </>
         ) }
       </div>
